@@ -7,41 +7,42 @@ import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class AccessFilter extends ZuulFilter  {
+public class AccessFilter extends ZuulFilter {
 
-    private static Logger log = LoggerFactory.getLogger(AccessFilter.class);
+	private static Logger log = LoggerFactory.getLogger(AccessFilter.class);
 
-    @Override
-    public String filterType() {
-        return "pre";
-    }
+	@Override
+	public String filterType() {
+		return "pre";
+	}
 
-    @Override
-    public int filterOrder() {
-        return 0;
-    }
+	@Override
+	public int filterOrder() {
+		return 0;
+	}
 
-    @Override
-    public boolean shouldFilter() {
-        return true;
-    }
+	@Override
+	public boolean shouldFilter() {
+		return true;
+	}
 
-    @Override
-    public Object run() {
-        RequestContext ctx = RequestContext.getCurrentContext();
-        HttpServletRequest request = ctx.getRequest();
+	@Override
+	public Object run() {
+		RequestContext ctx = RequestContext.getCurrentContext();
+		HttpServletRequest request = ctx.getRequest();
 
-        log.info("send {} request to {}", request.getMethod(), request.getRequestURL().toString());
+		log.info("send {} request to {}", request.getMethod(), request.getRequestURL().toString());
 
-        Object accessToken = request.getParameter("accessToken");
-        if(accessToken == null) {
-            log.warn("access token is empty");
-            ctx.setSendZuulResponse(false);
-            ctx.setResponseStatusCode(401);
-            return null;
-        }
-        log.info("access token ok");
-        return null;
-    }
+		Object accessToken = request.getParameter("accessToken");
+		if (accessToken == null) {
+			log.warn("access token is empty");
+			// zuul 过滤该请求
+			ctx.setSendZuulResponse(false);
+			ctx.setResponseStatusCode(401);
+			return null;
+		}
+		log.info("access token ok");
+		return null;
+	}
 
 }

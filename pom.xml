@@ -9,21 +9,27 @@
     <version>1.0</version>
 
     <modules>
+    <!-- 第2章 -->
         <module>spring-boot-hello</module>
+    <!-- 第3,5章 -->
         <module>eureka-server</module>
         <module>eureka-server-ha</module>
         <module>hello-service</module>
-
+    <!-- 第3,4,5章 -->
         <module>ribbon-consumer</module>
+    <!-- 第5章 -->
+        <module>hystrix-dashboard</module>
+        <module>turbine</module>
+        <module>turbine-amqp</module>
+    <!-- 第6章 -->    
         <module>feign-consumer</module>
-
         <module>hello-service-api</module>
-
+	<!-- 第7章 -->
         <module>api-gateway</module>
         <module>api-gateway-exception</module>
         <module>api-gateway-dynamic-route</module>
         <module>api-gateway-dynamic-filter</module>
-
+	<!-- 第7，8章 -->
         <module>config-server</module>
         <module>config-client</module>
 
@@ -38,10 +44,7 @@
 
         <module>rabbitmq-hello</module>
 
-        <module>hystrix-dashboard</module>
-        <module>turbine</module>
-        <module>turbine-amqp</module>
-
+        
         <module>stream-consumer</module>
         <module>stream-producer</module>
 
@@ -54,8 +57,6 @@
         <module>zipkin-server-stream</module>
         <module>zipkin-server-stream-mysql</module>
 
-        <module>consul-client-1</module>
-        <module>api-gateway-consul</module>
     </modules>
 
 </project>
