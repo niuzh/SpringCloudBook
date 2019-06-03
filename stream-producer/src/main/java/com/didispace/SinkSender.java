@@ -20,36 +20,29 @@ import java.util.Date;
 /**
  * 快速入门
  *
- * @author 翟永超
- * @create 2016/11/8.
- * @blog http://blog.didispace.com
  */
-//@EnableBinding(value = {SinkSender.SinkOutput.class})
+// @EnableBinding(value = {SinkSender.SinkOutput.class})
 public class SinkSender {
 
-    private static Logger logger = LoggerFactory.getLogger(HelloApplication.class);
+	private static Logger logger = LoggerFactory.getLogger(HelloApplication.class);
 
-    @Bean
-    @InboundChannelAdapter(value = SinkOutput.OUTPUT, poller = @Poller(fixedDelay = "2000"))
-    public MessageSource<Date> timerMessageSource() {
-        return () -> new GenericMessage<>(new Date());
-    }
+	@Bean
+	@InboundChannelAdapter(value = SinkOutput.OUTPUT, poller = @Poller(fixedDelay = "2000"))
+	public MessageSource<Date> timerMessageSource() {
+		return () -> new GenericMessage<>(new Date());
+	}
 
-    @Transformer(inputChannel = Sink.INPUT, outputChannel = SinkOutput.OUTPUT)
-    public Object transform(Date message) {
-        return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(message);
-    }
+	@Transformer(inputChannel = Sink.INPUT, outputChannel = SinkOutput.OUTPUT)
+	public Object transform(Date message) {
+		return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(message);
+	}
 
-    public interface SinkOutput {
+	public interface SinkOutput {
 
-        String OUTPUT = "input";
+		String OUTPUT = "input";
 
-        @Output(SinkOutput.OUTPUT)
-        MessageChannel output();
+		@Output(SinkOutput.OUTPUT)
+		MessageChannel output();
 
-    }
+	}
 }
-
-
-
-

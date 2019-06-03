@@ -31,20 +31,20 @@
         <module>api-gateway-dynamic-filter</module>
 	<!-- 第7，8章 -->
         <module>config-server</module>
+    <!-- 第8章 -->
         <module>config-client</module>
 
         <module>config-server-eureka</module>
         <module>config-client-eureka</module>
-
+        
+	<!-- 第9章 -->
+		<module>rabbitmq-hello</module>
         <module>config-server-eureka-rabbit</module>
         <module>config-client-eureka-rabbit</module>
-
         <module>config-server-eureka-kafka</module>
         <module>config-client-eureka-kafka</module>
-
-        <module>rabbitmq-hello</module>
-
-        
+    <!-- 第10章 -->
+    	<module>stream-hello</module>
         <module>stream-consumer</module>
         <module>stream-producer</module>
 
@@ -57,6 +57,7 @@
         <module>zipkin-server-stream</module>
         <module>zipkin-server-stream-mysql</module>
 
+        
     </modules>
 
 </project>
